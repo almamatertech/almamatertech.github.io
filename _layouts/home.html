@@ -1,0 +1,25 @@
+---
+layout: default
+---
+
+<section class="intro" aria-labelledby="intro-title">
+  <h1 id="intro-title" class="visually-hidden">{{ site.title }}</h1>
+  <p>Independent security research. We make sense of software by taking it apart and asking the right questions.</p>
+</section>
+
+<section class="notes" aria-labelledby="notes-title">
+  <h2 id="notes-title">Latest notes</h2>
+
+{% if site.posts.size > 0 %}
+    <ol class="post-list">
+{% for post in site.posts %}
+        <li>
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+          <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+        </li>
+{% endfor %}
+    </ol>
+{% else %}
+    <p class="empty-state">No notes published yet.</p>
+{% endif %}
+</section>

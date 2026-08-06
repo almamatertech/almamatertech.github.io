@@ -1,0 +1,63 @@
+name: Publish site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/configure-pages@v6
+      - name: Record published commit
+        run: printf '%s\n' "$GITHUB_SHA" > deployment.txt
+      - uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+      - uses: actions/upload-pages-artifact@v5
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    needs: build
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5
+        continue-on-error: true
+      - name: Confirm published commit
+        if: steps.deployment.outcome == 'failure' && steps.deployment.outputs.page_url != ''
+        run: |
+          site_url="${{ steps.deployment.outputs.page_url }}"
+
+          for _ in {1..240}; do
+            published_sha=$(curl --fail --silent --location --max-time 10 \
+              --header 'Cache-Control: no-cache' \
+              "${site_url%/}/deployment.txt?sha=$GITHUB_SHA" || true)
+
+            if [[ "$published_sha" == "$GITHUB_SHA" ]]; then
+              exit 0
+            fi
+
+            sleep 5
+          done
+
+          echo "Pages did not finish within 30 minutes"
+          exit 1
+      - name: Report deployment setup failure
+        if: steps.deployment.outcome == 'failure' && steps.deployment.outputs.page_url == ''
+        run: exit 1

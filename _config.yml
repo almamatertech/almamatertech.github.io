@@ -1,0 +1,11 @@
+title: Almamater Technologies
+description: "Independent security research. We make sense of software by taking it apart and asking the right questions."
+url: "https://almamatertech.com"
+baseurl: ""
+
+plugins:
+  - jekyll-feed
+
+exclude:
+  - README.md
+  - vendor
