@@ -1,0 +1,76 @@
+- reference: CVE-2026-43726
+  reference_url: https://support.apple.com/en-us/127594
+  title: Use-after-free in WebKit
+  component: WebKit
+  bug_id: "313857"
+  bug_url: https://bugs.webkit.org/show_bug.cgi?id=313857
+  fixed_in: iOS 26.5.2
+
+- reference: CVE-2026-43663
+  reference_url: https://support.apple.com/en-us/127594
+  title: Memory handling issue in WebKit
+  component: WebKit
+  bug_id: "312781"
+  bug_url: https://bugs.webkit.org/show_bug.cgi?id=312781
+  fixed_in: iOS 26.5.2
+
+- reference: CVE-2026-43707
+  reference_url: https://support.apple.com/en-us/127594
+  title: Memory corruption in WebKit
+  component: WebKit
+  bug_id: "315951"
+  bug_url: https://bugs.webkit.org/show_bug.cgi?id=315951
+  fixed_in: iOS 26.5.2
+
+- reference: "-"
+  title: Out-of-bounds write in glTF JOINTS accessor import
+  component: ModelIO / libusd_ms
+  fixed_in: iOS / macOS 26.6
+
+- reference: CVE-2026-64763
+  reference_url: https://www.cve.org/CVERecord?id=CVE-2026-64763
+  title: Out-of-bounds write in variable-topology geometry deformer source expansion
+  component: SceneKit
+  fixed_in: iOS / macOS 26.6
+
+- reference: CVE-2026-64765
+  reference_url: https://www.cve.org/CVERecord?id=CVE-2026-64765
+  title: Out-of-bounds write in keyframe animation accessor deserialization
+  component: SceneKit
+  fixed_in: iOS / macOS 26.6
+
+- reference: CVE-2026-64764
+  reference_url: https://www.cve.org/CVERecord?id=CVE-2026-64764
+  title: Out-of-bounds read in compressed SCNMorpher AnimCodec adjacency parsing
+  component: SceneKit
+  fixed_in: iOS / macOS 26.6
+
+- reference: CVE-2026-64766
+  reference_url: https://www.cve.org/CVERecord?id=CVE-2026-64766
+  title: Out-of-bounds write in SCNParticleSystem stream allocation
+  component: Quick Look / SceneKit
+  fixed_in: iOS / macOS 26.6
+
+- reference: CVE-2026-64770
+  reference_url: https://www.cve.org/CVERecord?id=CVE-2026-64770
+  title: Out-of-bounds write in USD Skel blend-shape point-index handling
+  component: libusd_ms
+  fixed_in: iOS / macOS 26.6
+
+- reference: CVE-2026-64768
+  reference_url: https://www.cve.org/CVERecord?id=CVE-2026-64768
+  title: Out-of-bounds read in PointInstancer protoIndices rendering
+  component: libusd_ms
+  fixed_in: iOS / macOS 26.6
+
+- reference: CVE-2026-64769
+  reference_url: https://www.cve.org/CVERecord?id=CVE-2026-64769
+  title: Out-of-bounds read in GeomSubset face-index parsing
+  component: libusd_ms
+  fixed_in: iOS / macOS 26.6
+
+- reference: CVE-2026-64774
+  reference_url: https://www.cve.org/CVERecord?id=CVE-2026-64774
+  title: Out-of-bounds write in USD NURBS patch topology construction
+  component: libusd_ms
+  fixed_in: iOS / macOS 26.6

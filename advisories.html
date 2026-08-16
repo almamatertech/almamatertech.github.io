@@ -1,0 +1,40 @@
+---
+layout: default
+title: Advisories
+description: Security bugs reported by Almamater Technologies.
+permalink: /advisories/
+---
+
+<section class="advisory-page" aria-labelledby="advisories-title">
+  <header class="page-header">
+    <h1 id="advisories-title">Advisories</h1>
+  </header>
+
+  <table class="advisory-table">
+    <caption class="visually-hidden">Fixed security bugs reported by Almamater Technologies</caption>
+    <tbody>
+{% for advisory in site.data.advisories %}
+      <tr>
+        <td class="advisory-reference">
+          <span class="visually-hidden">Reference: </span>
+{% if advisory.reference_url %}
+          <a href="{{ advisory.reference_url }}" rel="external">{{ advisory.reference }}</a>
+{% else %}
+          {{ advisory.reference }}
+{% endif %}
+        </td>
+        <td class="advisory-finding">
+          <strong>{{ advisory.title }}</strong>
+          <span>
+            {{ advisory.component }}{% if advisory.bug_id %} · <a href="{{ advisory.bug_url }}" rel="external">Bug {{ advisory.bug_id }}</a>{% endif %}
+          </span>
+        </td>
+        <td class="advisory-state">
+          <span class="visually-hidden">State: </span>Fixed
+          <small>{{ advisory.fixed_in }}</small>
+        </td>
+      </tr>
+{% endfor %}
+    </tbody>
+  </table>
+</section>
